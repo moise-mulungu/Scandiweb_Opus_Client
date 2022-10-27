@@ -15,6 +15,9 @@ export default class Navigation extends React.Component {
             <li>
               <Link to="/categories">Categories</Link>
             </li>
+            <li>
+              <Link to="/products">Products</Link>
+            </li>
           </ul>
         </div>
         <div className="icon">

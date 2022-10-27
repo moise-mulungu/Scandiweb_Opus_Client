@@ -37,6 +37,7 @@ body {
   letter-spacing: 1.9px;
   width: 13.563rem;
   list-style: none;
+  gap: 1.5rem;
 }
 
 .navPages li a {
