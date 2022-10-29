@@ -7,22 +7,22 @@ export default class Navigation extends React.Component {
     return (
       <nav className="navContainer">
         <div className="navItems">
-          <h1 id="navTitle">Bookstore CMS</h1>
+          {/* <h1 id="navTitle">Bookstore CMS</h1> */}
           <ul className="navPages">
             <li>
-              <Link to="/">Books</Link>
+              <Link to="/">Women</Link>
             </li>
             <li>
-              <Link to="/categories">Categories</Link>
+              <Link to="/categories">Men</Link>
             </li>
             <li>
-              <Link to="/products">Products</Link>
+              <Link to="/products">Kids</Link>
             </li>
           </ul>
         </div>
-        <div className="icon">
+        {/* <div className="icon">
           <img src={icon} alt="profile" />
-        </div>
+        </div> */}
       </nav>
     );
   }

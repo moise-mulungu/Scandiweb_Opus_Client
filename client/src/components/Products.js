@@ -50,7 +50,13 @@ class Products extends React.Component {
             product,
             idx // TODO: don't use index
           ) => (
-            <pre key={idx}>{JSON.stringify(product, null, 2)}</pre>
+            <pre key={idx}>{JSON.stringify(product, null, 2)}</pre>,
+            <div key={idx} className="cont">
+              {product.id}
+              <h2>{product.name}</h2>
+              <p>{product.category}</p>
+              <p>{product.description}</p>
+            </div>
           )
         )}
         {/* // <AddBook /> */}
