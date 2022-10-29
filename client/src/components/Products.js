@@ -45,6 +45,7 @@ class Products extends React.Component {
     console.log('Products component ran', { products });
     return (
       <>
+        <h1>Category  Name</h1>
         {products.filter(Boolean).map(
           (
             product,
