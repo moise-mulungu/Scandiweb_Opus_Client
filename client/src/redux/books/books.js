@@ -47,7 +47,8 @@ query GetProductsForAllCategories {
     products {
       id
       name
-      category
+      description
+      gallery
        attributes {
          id
          name 
@@ -57,17 +58,17 @@ query GetProductsForAllCategories {
   }
 }
 */
-    const categoryQuery = new Query('category', true) // `true` means 'expect array'
-      // .addArgument('id', 'String', "huarache-x-stussy-le") // use for product query when have to provide a specific id
-      .addFieldList(['name'])
-      .addField(
-        new Field('products', true)
-          .addFieldList(['id', 'name', 'category'])
-          .addField(
-            new Field('attributes', true).addFieldList(['id', 'name', 'type'])
-            // follow the same pattern here to add "items" field
-          )
-      );
+//     const categoryQuery = new Query('category', true) // `true` means 'expect array'
+//       // .addArgument('id', 'String', "huarache-x-stussy-le") // use for product query when have to provide a specific id
+//       .addFieldList(['name'])
+//       .addField(
+//         new Field('products', true)
+//           .addFieldList(['id', 'name', 'description', 'gallery'])
+//           .addField(
+//             new Field('attributes', true).addFieldList(['id', 'name', 'items'])
+//             // follow the same pattern here to add "items" field
+//           )
+//       );
     const queryResult = await client.post(categoryQuery);
     console.log('data', queryResult);
     // this would be a simple test that opus works
@@ -79,6 +80,7 @@ query GetProductsForAllCategories {
     console.log('error', e);
   }
 };
+
 const productsReducer = (state = initialState, action) => {
   switch (action.type) {
     // case ADD:

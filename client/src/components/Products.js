@@ -53,10 +53,23 @@ class Products extends React.Component {
           ) => (
             <pre key={idx}>{JSON.stringify(product, null, 2)}</pre>,
             <div key={idx} className="cont">
-              {product.id}
-              <h2>{product.name}</h2>
-              <p>{product.category}</p>
-              <p>{product.description}</p>
+              ProductId:{product.id}
+              <h2>Name:{product.name}</h2>
+              ProductionDesc: 
+              <div
+                dangerouslySetInnerHTML={{ __html: product.description}}
+              />
+              <div>
+                ProductGallery : {' '}
+                {product.gallery?.map((imageUrl) => {
+                  // return(
+                  //   // <div key={imageUrl}>
+                  //   //   <img src={imageUrl} />
+                  //   // </div>
+                  // );
+                })}
+              </div>
+              
             </div>
           )
         )}
