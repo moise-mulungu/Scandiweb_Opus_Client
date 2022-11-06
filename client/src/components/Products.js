@@ -62,11 +62,11 @@ class Products extends React.Component {
               <div>
                 ProductGallery : {' '}
                 {product.gallery?.map((imageUrl) => {
-                  // return(
-                  //   // <div key={imageUrl}>
-                  //   //   <img src={imageUrl} />
-                  //   // </div>
-                  // );
+                  return(
+                    <div key={imageUrl}>
+                      <img src={imageUrl} />
+                    </div>
+                  );
                 })}
               </div>
               

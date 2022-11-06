@@ -32,8 +32,9 @@ query GetProductsForAllCategories {
   }
 }
 */
-    const categoryQuery = new Query('categories', true) // `true` means 'expect array'
+    const categoryQuery = new Query('category', true) // `true` means 'expect array'
       // .addArgument('id', 'String', "huarache-x-stussy-le") // use for product query when have to provide a specific id
+      .addArgument('input', 'CategoryInput', { title: 'clothes' })
       .addFieldList(['name'])
         .addField(
           new Field('products', true)
