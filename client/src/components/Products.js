@@ -41,14 +41,14 @@ class Products extends React.Component {
   }
 
   render() {
-    const { products = [] } = this.props;
+    const { products = [] } = this.props.match.params.id;
 
     console.log('Products component ran', { products });
     return (
       <>
         <h1>Category  Name</h1>
         {products.filter(Boolean)
-        .filter((product) => categoryToIdsMap['women'].includes(product.id))
+        .filter((product) => categoryToIdsMap['men'].includes(product.id))
         .map(
           (
             product,

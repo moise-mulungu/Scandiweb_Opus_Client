@@ -3,7 +3,7 @@ import React from "react";
 
 export const categoryToIdsMap = {
     men: [
-    'huarache-x-stussy-le',
+    // 'huarache-x-stussy-le',
     'apple-imac-2021',
     'apple-iphone-12-pro',
     'apple-airpods-pro',

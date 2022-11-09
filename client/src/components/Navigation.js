@@ -10,7 +10,7 @@ export default class Navigation extends React.Component {
           {/* <h1 id="navTitle">Bookstore CMS</h1> */}
           <ul className="navPages">
             <li>
-              <Link to="/">Women</Link>
+            {categoryToIdsMap.map(product => (<Link to={'categoryToIdsMap/' + product.id} />),)}
             </li>
             <li>
               <Link to="/categories">Men</Link>
