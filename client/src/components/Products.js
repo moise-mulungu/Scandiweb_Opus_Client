@@ -1,6 +1,7 @@
 import React from 'react';
 import Proptypes from 'prop-types';
 import { GetProductsForAllCategories } from '../redux/products/products';
+import { categoryToIdsMap } from '../constants';
 
 import { connect } from 'react-redux';
 // to implement 'add book', see deleteBook in Book.js example of converting a hook to class component with mapDispatchToProps
@@ -46,7 +47,9 @@ class Products extends React.Component {
     return (
       <>
         <h1>Category  Name</h1>
-        {products.filter(Boolean).map(
+        {products.filter(Boolean)
+        .filter((product) => categoryToIdsMap['women'].includes(product.id))
+        .map(
           (
             product,
             idx // TODO: don't use index
