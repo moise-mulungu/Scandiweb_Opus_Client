@@ -1,29 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { categoryToIdsMap } from '../constants';
-import icon from './icon.png';
 
 export default class Navigation extends React.Component {
   render() {
     return (
       <nav className="navContainer">
         <div className="navItems">
-          {/* <h1 id="navTitle">Bookstore CMS</h1> */}
           <ul className="navPages">
             <li>
-            {categoryToIdsMap.map(product => (<Link to={'categoryToIdsMap/' + product.id} />),)}
+              {Object.keys(categoryToIdsMap).map((categoryId) => (
+                <Link key={categoryId} to={'/' + categoryId}>
+                  {categoryId}
+                </Link>
+              ))}
             </li>
-            {/* <li>
-              <Link to="/categories">Men</Link>
-            </li>
-            <li>
-              <Link to="/products">Kids</Link>
-            </li> */}
           </ul>
         </div>
-        {/* <div className="icon">
-          <img src={icon} alt="profile" />
-        </div> */}
       </nav>
     );
   }
