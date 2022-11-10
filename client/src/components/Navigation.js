@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { categoryToIdsMap } from '../constants';
 import icon from './icon.png';
 
 export default class Navigation extends React.Component {
@@ -12,12 +13,12 @@ export default class Navigation extends React.Component {
             <li>
             {categoryToIdsMap.map(product => (<Link to={'categoryToIdsMap/' + product.id} />),)}
             </li>
-            <li>
+            {/* <li>
               <Link to="/categories">Men</Link>
             </li>
             <li>
               <Link to="/products">Kids</Link>
-            </li>
+            </li> */}
           </ul>
         </div>
         {/* <div className="icon">
