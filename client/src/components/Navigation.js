@@ -8,7 +8,7 @@ export default class Navigation extends React.Component {
       <nav className="navContainer">
         <div className="navItems">
           <ul className="navPages">
-            <li>
+            <li className="navPages">
               {Object.keys(categoryToIdsMap).map((categoryId) => (
                 <Link key={categoryId} to={'/' + categoryId}>
                   {categoryId}
