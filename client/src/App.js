@@ -4,11 +4,11 @@ import { withRouter } from './utils';
 import './App.css';
 import AppNav from './components/Navigation';
 import Products from './components/Products';
-// import Product from './components/Product';
+import Product from './components/Product';
 // import Cart from './components/Cart';
 
 const WrappedProducts = withRouter(Products);
-// const WrappedProduct = withRouter(Product);
+const WrappedProduct = withRouter(Product);
 
 export default function App() {
   return (
@@ -17,8 +17,8 @@ export default function App() {
       <Routes>
         <Route path="/" element={<WrappedProducts />} />
         <Route path="/:id" element={<WrappedProducts />} />
-        {/* <Route path="product/:id" element={<WrappedProduct />} />
-        <Route path="cart" element={<Cart />} /> */}
+        <Route path="product/:id" element={<WrappedProduct />} />
+        {/* <Route path="cart" element={<Cart />} /> */}
       </Routes>
     </div>
   );
