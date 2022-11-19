@@ -36,7 +36,7 @@ class Product extends React.Component {
   }
 
   render() {
-    const { product, router: {params: { string = 'id' }, // if the user goes to the homepage, there is no categoryId in the URL, so default to 'women'
+    const { product, router: {params: { categoryId = 'women' }, // if the user goes to the homepage, there is no categoryId in the URL, so default to 'women'
       },
     } = this.props;
 
@@ -45,7 +45,7 @@ class Product extends React.Component {
       <>
         <h1>Category  Name</h1>
         {product.filter(Boolean)
-        .filter((product) => categoryToIdsMap[String].includes(product.id))
+        .filter((product) => categoryToIdsMap[categoryId].includes(product.id))
         .map(
           (
             product,
@@ -81,7 +81,7 @@ class Product extends React.Component {
 Product.propTypes = {
   product: Proptypes.arrayOf(Proptypes.object).isRequired,
   getProduct: Proptypes.func.isRequired,
-  String: Proptypes.string,
+  categoryId: Proptypes.string,
   router: Proptypes.object,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Product);
