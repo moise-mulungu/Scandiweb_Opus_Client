@@ -8,19 +8,18 @@ export const GetProductsForAllCategories = () => async (dispatch) => {
   try {
     client.setEndpoint("http://localhost:4000/graphql");
 
-    const categoryQuery = new Query("product", true);
-      .addArgument("input", "String", { title: "all" });
-      .addFieldList(["id", "name", "InStock", "gallery"]);
-
-      const queryResult = await client.post(categoryQuery);
-      console.log("GetProductsForAllCategories() fetchedData", queryResult);
-
-    dispatch({ type: UPDATE, payload: queryResult });
-    } catch (e) {
-    dispatch({ type: UPDATE, payload: [] });
-    console.log("error", e);
-    }
-
+    const categoryQuery = new Query('product', true) // `true` means 'expect array'
+    .addArgument('input', 'String', { title: 'all' })
+    .addFieldList(['id', 'name', 'InStock', 'gallery'])
+      
+  const queryResult = await client.post(categoryQuery);
+  console.log('GetProductsForAllCategories() fetchedData', queryResult);
+   
+  dispatch({ type: UPDATE, payload: queryResult });
+} catch (e) {
+  dispatch({ type: UPDATE, payload: [] });
+  console.log('error', e);
+}
 };
 
 const productReducer = (state = initialState, action) => {
@@ -38,8 +37,8 @@ const productReducer = (state = initialState, action) => {
           default:
             return state;
         }
-      };
+};
       
-      export default productReducer;
+export default productReducer;
       
 
