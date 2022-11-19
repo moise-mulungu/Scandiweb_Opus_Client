@@ -78,7 +78,7 @@ class Product extends React.Component {
     );
   }
 }
-Products.propTypes = {
+Product.propTypes = {
   product: Proptypes.arrayOf(Proptypes.object).isRequired,
   getProduct: Proptypes.func.isRequired,
   String: Proptypes.string,
