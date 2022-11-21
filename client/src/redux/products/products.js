@@ -78,7 +78,7 @@ const productsReducer = (state = initialState, action) => {
 
 */
       const products = action.payload?.category?.products;
-      console.log('productsReducer() products', {
+      console.log('redux/allproducts productsReducer() products', {
         everything: action.payload,
         products,
       });
