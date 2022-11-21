@@ -1,7 +1,6 @@
 import React from 'react';
 import Proptypes from 'prop-types';
-import { GetProductsForAllCategories } from '../redux/product/product';
-import { categoryToIdsMap } from '../constants';
+import { getProductById } from '../redux/product/product';
 
 import { connect } from 'react-redux';
 
@@ -12,7 +11,10 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getProduct: () => dispatch(GetProductsForAllCategories()),
+    getProduct: (productId) => {
+      console.log('dispatching getProductById for productId', productId);
+      dispatch(getProductById(productId));
+    },
   };
 };
 
@@ -22,66 +24,66 @@ class Product extends React.Component {
   }
 
   componentDidMount() {
-    console.log('componentDidMount initial data load');
-    this.props.getProduct();
+    const productId = this.props.router?.params?.productId;
+    console.log('Product componentDidMount initial data load', {});
+    if (productId) this.props.getProduct(productId);
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps?.product !== this.props.product) {
-      console.log('cDU', {
-        prevPropsProduct: prevProps?.product,
-        thisPropsProduct: this.props.product,
-      });
-    }
-  }
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (prevProps?.product !== this.props.product) {
+  //     console.log('cDU', {
+  //       prevPropsProduct: prevProps?.product,
+  //       thisPropsProduct: this.props.product,
+  //     });
+  //   }
+  // }
 
   render() {
-    const { product, router: {params: { categoryId = 'women' }, // if the user goes to the homepage, there is no categoryId in the URL, so default to 'women'
+    const {
+      product,
+      router: {
+        // params: { catexxxgoryId = 'women' },
       },
     } = this.props;
 
-    console.log('Products component ran', { product });
+    if (product.error)
+      return (
+        <div>
+          {product.error}, please go to the product listing and select a product
+        </div>
+      );
+    if (!product.id) return <div>loading ...</div>; // TODO: check against figma spec
+
+    console.log('Product component rendered', { product, props: this.props });
     return (
       <>
-        <h1>Category  Name</h1>
-        {product.filter(Boolean)
-        .filter((product) => categoryToIdsMap[categoryId].includes(product.id))
-        .map(
-          (
-            product,
-            idx // TODO: don't use index
-          ) => (
-            <pre key={idx}>{JSON.stringify(product, null, 2)}</pre>,
-            <div key={idx} className="cont">
-              ProductId:{product.id}
-              <h2>Name:{product.name}</h2>
-              ProductionDesc: 
-              <div
-                dangerouslySetInnerHTML={{ __html: product.description}}
-              />
-              <div>
-                ProductGallery : {' '}
-                {product.gallery?.map((imageUrl) => {
-                  return(
-                    <div key={imageUrl}>
-                      <img src={imageUrl} />
-                    </div>
-                  );
-                })}
-              </div>
-              
-            </div>
-          )
-        )}
-        {/* // <AddBook /> */}
+        <h1>Product Name</h1>
+        <pre>{JSON.stringify(product, null, 2)}</pre>
+        <div className="cont">
+          ProductId:{product.id}
+          <h2>Name:{product.name}</h2>
+          ProductionDesc:
+          <div dangerouslySetInnerHTML={{ __html: product.description }} />
+          <div>
+            ProductGallery :{' '}
+            {product.gallery?.map((imageUrl) => {
+              return (
+                <div key={imageUrl}>
+                  <img src={imageUrl} />
+                </div>
+              );
+            })}
+          </div>
+        </div>
       </>
     );
   }
 }
+
 Product.propTypes = {
   product: Proptypes.arrayOf(Proptypes.object).isRequired,
   getProduct: Proptypes.func.isRequired,
-  categoryId: Proptypes.string,
+  productId: Proptypes.string,
   router: Proptypes.object,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Product);
