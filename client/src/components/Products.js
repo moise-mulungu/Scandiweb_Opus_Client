@@ -41,43 +41,55 @@ class Products extends React.Component {
   }
 
   render() {
-    const { products, router: {params: { categoryId = 'women' }, // if the user goes to the homepage, there is no categoryId in the URL, so default to 'women'
+    const {
+      products,
+      router: {
+        params: { categoryId = 'women' }, // if the user goes to the homepage, there is no categoryId in the URL, so default to 'women'
       },
     } = this.props;
 
-    console.log('Products component ran', { products });
+    console.log('Products component ran', {
+      products,
+      props: this.props,
+      categoryId,
+    });
     return (
       <>
-        <h1>Category  Name</h1>
-        {products.filter(Boolean)
-        .filter((product) => categoryToIdsMap[categoryId].includes(product.id))
-        .map(
-          (
-            product,
-            idx // TODO: don't use index
-          ) => (
-            <pre key={idx}>{JSON.stringify(product, null, 2)}</pre>,
-            <div key={idx} className="cont">
-              ProductId:{product.id}
-              <h2>Name:{product.name}</h2>
-              ProductionDesc: 
-              <div
-                dangerouslySetInnerHTML={{ __html: product.description}}
-              />
-              <div>
-                ProductGallery : {' '}
-                {product.gallery?.map((imageUrl) => {
-                  return(
-                    <div key={imageUrl}>
-                      <img src={imageUrl} />
-                    </div>
-                  );
-                })}
-              </div>
-              
-            </div>
+        <h1>Category Name</h1>
+        {products
+          .filter(Boolean)
+          .filter((product) =>
+            categoryToIdsMap[categoryId].includes(product.id)
           )
-        )}
+          .map(
+            (
+              product,
+              idx // TODO: don't use index
+            ) => (
+              (<pre key={idx}>{JSON.stringify(product, null, 2)}</pre>),
+              (
+                <div key={idx} className="cont">
+                  ProductId:{product.id}{' '}
+                  <a href={`/product/${product.id}`}>GOTO: {product.name}</a>
+                  <h2>Name:{product.name}</h2>
+                  ProductionDesc:
+                  <div
+                    dangerouslySetInnerHTML={{ __html: product.description }}
+                  />
+                  {/*  <div>
+                    ProductGallery :{' '}
+                    {product.gallery?.map((imageUrl) => {
+                      return (
+                        <div key={imageUrl}>
+                          <img src={imageUrl} />
+                        </div>
+                      );
+                    })}
+                  </div> */}
+                </div>
+              )
+            )
+          )}
         {/* // <AddBook /> */}
       </>
     );
