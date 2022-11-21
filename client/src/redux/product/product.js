@@ -1,44 +1,41 @@
-import { client, Query } from "@tilework/opus";
+import { client, Query } from '@tilework/opus';
 
-const UPDATE = "getProducts";
+const UPDATE = 'getProduct';
 
-const initialState = [];
+const initialState = {};
 
-export const GetProductsForAllCategories = () => async (dispatch) => {
+export const getProductById = (productId) => async (dispatch) => {
   try {
-    client.setEndpoint("http://localhost:4000/graphql");
+    client.setEndpoint('http://localhost:4000/graphql');
 
-    const categoryQuery = new Query('product', true) // `true` means 'expect array'
-    .addArgument('input', 'String', { title: 'all' })
-    .addFieldList(['id', 'name', 'InStock', 'gallery'])
-      
-  const queryResult = await client.post(categoryQuery);
-  console.log('GetProductsForAllCategories() fetchedData', queryResult);
-   
-  dispatch({ type: UPDATE, payload: queryResult });
-} catch (e) {
-  dispatch({ type: UPDATE, payload: [] });
-  console.log('error', e);
-}
+    const productQuery = new Query('product', true) // `true` means 'expect array'
+      .addArgument('id', 'String!', productId)
+      .addFieldList(['id', 'name', 'inStock', 'gallery']);
+
+    const queryResult = await client.post(productQuery);
+    console.log('redux/product getProductById() fetchedData', queryResult);
+
+    dispatch({ type: UPDATE, payload: { queryResult } });
+  } catch (e) {
+    console.log('error', e);
+    dispatch({ type: UPDATE, payload: [] });
+  }
 };
 
 const productReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case UPDATE: {
+  switch (action.type) {
+    case UPDATE: {
+      const product = action.payload?.product;
+      console.log('redux/product  productReducer() product', {
+        actionPayload: action.payload,
+        product,
+      });
 
-            const product = action.payload?.category?.product?.id;
-            console.log('productReducer() product', {
-              everything: action.payload,
-              product,
-            });
-      
-            return product;
-          }
-          default:
-            return state;
-        }
+      return product || { error: 'unknown product' };
+    }
+    default:
+      return state;
+  }
 };
-      
-export default productReducer;
-      
 
+export default productReducer;
