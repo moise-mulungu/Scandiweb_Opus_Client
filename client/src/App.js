@@ -16,8 +16,8 @@ export default function App() {
       <AppNav />
       <Routes>
         <Route path="/" element={<WrappedProducts />} />
-        <Route path="/:id" element={<WrappedProducts />} />
-        <Route path="product/:id" element={<WrappedProduct />} />
+        <Route path="/:categoryId" element={<WrappedProducts />} />
+        <Route path="product/:productId" element={<WrappedProduct />} />
         {/* <Route path="cart" element={<Cart />} /> */}
       </Routes>
     </div>
