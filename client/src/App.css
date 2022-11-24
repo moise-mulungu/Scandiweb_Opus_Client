@@ -1,4 +1,4 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto+Slab&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto+Slab&display=swap');
 
 body {
   background-color: #fafafa;
@@ -282,26 +282,12 @@ form button {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background-color: #fff;
   margin: 1% 5%;
-  border: 1px solid green;
-} */
-
-body {
-position: absolute;
-width: 1440px;
-height: 1513px;
-left: 0px;
-top: 0px;
-
-background: #FFFFFF;
-}
-
-.navContainer {
-  /* position: absolute; */
-left: 0%;
-right: 0%;
-top: 0%;
-bottom: 0%;
-background: #FFFFFF;
+  padding: 1% 10% 1% 2%;
+  font-family: 'Roboto Slab', serif;
+  border: solid 1px #e8e8e8;
+  border-radius: 5px;
+  box-shadow: 0 0 60px 0 rgba(0, 0, 0, 0.05);
 }
 
