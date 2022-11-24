@@ -38,10 +38,10 @@ query GetProductsForAllCategories {
       .addFieldList(['name'])
         .addField(
           new Field('products', true)
-            .addFieldList(['id', 'name', 'category', 'description', 'gallery', 'prices'])
+            .addFieldList(['id', 'name', 'category', 'description', 'gallery'])
               .addField(
                 new Field('prices', true)
-                  .addFieldList(['currency', 'amount'])
+                  .addFieldList(['amount'])
                     .addField(
                       new Field('currency', true)
                         .addFieldList(['label', 'symbol'])

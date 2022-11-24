@@ -86,6 +86,16 @@ class Products extends React.Component {
                       );
                     })}
                   </div>
+                  <div>
+                    ProductPrice : {product.prices?.map((price) => {
+                      return (
+                        <div key={price.currency}>
+                          {price.currency.label}
+                          {price.currency.symbol} {price.amount}
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
               )
             )
