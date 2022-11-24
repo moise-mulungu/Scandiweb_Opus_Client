@@ -55,7 +55,7 @@ class Products extends React.Component {
     });
     return (
       <>
-        <h1>Category Name</h1>
+        <h1 className='title'>Category Name</h1>
         {products
           .filter(Boolean)
           .filter((product) =>
@@ -76,11 +76,11 @@ class Products extends React.Component {
                   <div
                     dangerouslySetInnerHTML={{ __html: product.description }}
                   />
-                  {/*  <div>
+                   {/* <div>
                     ProductGallery :{' '}
                     {product.gallery?.map((imageUrl) => {
                       return (
-                        <div key={imageUrl}>
+                        <div key={imageUrl} className="img">
                           <img src={imageUrl} />
                         </div>
                       );
