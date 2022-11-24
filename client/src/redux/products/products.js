@@ -38,11 +38,15 @@ query GetProductsForAllCategories {
       .addFieldList(['name'])
         .addField(
           new Field('products', true)
-            .addFieldList(['id', 'name', 'category', 'description', 'gallery'])
-            .addField(
-              new Field('attributes', true).addFieldList(['id', 'name', 'type'])
-            // follow the same pattern here to add "items" field
-          )
+            .addFieldList(['id', 'name', 'category', 'description', 'gallery', 'prices'])
+              .addField(
+                new Field('prices', true)
+                  .addFieldList(['currency', 'amount'])
+                    .addField(
+                      new Field('currency', true)
+                        .addFieldList(['label', 'symbol'])
+                    )
+              )
       );
     const queryResult = await client.post(categoryQuery);
     console.log('GetProductsForAllCategories() fetchedData', queryResult);

@@ -76,7 +76,7 @@ class Products extends React.Component {
                   <div
                     dangerouslySetInnerHTML={{ __html: product.description }}
                   />
-                   {/* <div>
+                   <div className='productGallery'>
                     ProductGallery :{' '}
                     {product.gallery?.map((imageUrl) => {
                       return (
@@ -85,7 +85,7 @@ class Products extends React.Component {
                         </div>
                       );
                     })}
-                  </div> */}
+                  </div>
                 </div>
               )
             )
