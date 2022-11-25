@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { categoryToIdsMap } from '../constants';
+import VSF from '../image/VSF.png';
+import Actions from '../image/Actions.png';
 
 export default class Navigation extends React.Component {
   render() {
@@ -16,6 +18,8 @@ export default class Navigation extends React.Component {
               ))}
             </li>
           </ul>
+          <img src={VSF} className='icon'/>
+          <img src={Actions} />
         </div>
       </nav>
     );

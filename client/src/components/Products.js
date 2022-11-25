@@ -51,6 +51,8 @@ class Products extends React.Component {
     return (
       <>
         <h1 className='title'>Category Name</h1>
+        <div className='allCards'>
+
         {products
           .filter(Boolean)
           .filter((product) =>
@@ -66,11 +68,10 @@ class Products extends React.Component {
                 <div key={idx} className="cont">
                   ProductId:{product.id}{' '}
                   <a href={`/product/${product.id}`}>GOTO: {product.name}</a>
-                  <h2>Name:{product.name}</h2>
-                  ProductionDesc:
+                  {/* ProductionDesc:
                   <div
-                    dangerouslySetInnerHTML={{ __html: product.description }}
-                  />
+                  dangerouslySetInnerHTML={{ __html: product.description }}
+                /> */}
                    <div className='productGallery'>
                     ProductGallery :{' '}
                     {product.gallery?.map((imageUrl) => {
@@ -81,6 +82,7 @@ class Products extends React.Component {
                       );
                     })}
                   </div>
+                  <h2>{product.name}</h2>
                   <div>
                     ProductPrice : {product.prices?.map((price) => {
                       return (
@@ -95,6 +97,7 @@ class Products extends React.Component {
               )
             )
           )}
+        </div>
       </>
     );
   }
