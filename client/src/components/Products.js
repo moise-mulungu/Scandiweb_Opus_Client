@@ -4,8 +4,6 @@ import { GetProductsForAllCategories } from '../redux/products/products';
 import { categoryToIdsMap } from '../constants';
 
 import { connect } from 'react-redux';
-// to implement 'add book', see deleteBook in Book.js example of converting a hook to class component with mapDispatchToProps
-// import AddBook from './AddBook';
 
 function mapStateToProps(state) {
   const products = state.productsReducer;
@@ -15,15 +13,12 @@ function mapStateToProps(state) {
 const mapDispatchToProps = (dispatch) => {
   return {
     getProducts: () => dispatch(GetProductsForAllCategories()),
-    //     deleteBook: (bookId) => dispatch(del(bookId)),
   };
 };
 
 class Products extends React.Component {
   constructor(props) {
     super(props);
-    // note: Moise ask me when you need local state, I'll show you some examples
-    // this.state = { };
   }
 
   componentDidMount() {
@@ -100,7 +95,6 @@ class Products extends React.Component {
               )
             )
           )}
-        {/* // <AddBook /> */}
       </>
     );
   }

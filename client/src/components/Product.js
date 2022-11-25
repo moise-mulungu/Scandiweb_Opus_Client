@@ -29,15 +29,6 @@ class Product extends React.Component {
     if (productId) this.props.getProduct(productId);
   }
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (prevProps?.product !== this.props.product) {
-  //     console.log('cDU', {
-  //       prevPropsProduct: prevProps?.product,
-  //       thisPropsProduct: this.props.product,
-  //     });
-  //   }
-  // }
-
   render() {
     const {
       product,
