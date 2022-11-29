@@ -48,6 +48,7 @@ class Products extends React.Component {
       products,
       props: this.props,
       categoryId,
+      Price,
     });
     return (
       <>
@@ -85,14 +86,10 @@ class Products extends React.Component {
                   </div>
                   <h2>{product.name}</h2>
                   <div>
-                    ProductPrice : {product.prices?.map((price) => {
-                      return (
-                        <div key={price.currency}>
-                          {price.currency.label}
-                          {price.currency.symbol} {price.amount}
-                        </div>
-                      );
-                    })}
+                    <Price
+                      prices={product.prices}
+                      currencyLabel={defaultCurrencyLabel}
+                    />
                   </div>
                 </div>
               )

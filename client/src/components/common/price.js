@@ -9,4 +9,8 @@ export default function Price({ prices, currencyLabel }) {
       </div>
     );
   }
-  
+
+  Price.propTypes = {
+    prices: Proptypes.arrayOf(Proptypes.object).isRequired,
+    currencyLabel: Proptypes.string.isRequired,
+    };
