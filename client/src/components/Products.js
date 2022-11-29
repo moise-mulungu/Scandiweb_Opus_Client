@@ -1,7 +1,7 @@
 import React from 'react';
 import Proptypes from 'prop-types';
 import { GetProductsForAllCategories } from '../redux/products/products';
-import { categoryToIdsMap } from '../constants';
+import { categoryToIdsMap, defaultCurrencyLabel } from '../constants';
 
 import { connect } from 'react-redux';
 
