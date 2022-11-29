@@ -2,6 +2,7 @@ import React from 'react';
 import Proptypes from 'prop-types';
 import { GetProductsForAllCategories } from '../redux/products/products';
 import { categoryToIdsMap, defaultCurrencyLabel } from '../constants';
+import Price from './common/price';
 
 import { connect } from 'react-redux';
 
