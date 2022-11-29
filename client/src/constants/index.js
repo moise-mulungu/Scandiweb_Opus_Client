@@ -23,3 +23,4 @@ export const categoryToIdsMap = {
     ]
 };
 
+export const defaultCurrencyLabel = 'USD';
