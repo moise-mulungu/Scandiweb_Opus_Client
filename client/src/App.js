@@ -1,19 +1,24 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { withRouter } from './utils';
 import './App.css';
-import Books from './components/Books';
-import Categories from './components/Categories';
-import Products from './components/Products';
 import AppNav from './components/Navigation';
+import Products from './components/Products';
+import Product from './components/Product';
+// import Cart from './components/Cart';
+
+const WrappedProducts = withRouter(Products);
+const WrappedProduct = withRouter(Product);
 
 export default function App() {
   return (
     <div>
       <AppNav />
       <Routes>
-        <Route exact path="/" element={<Books />} />
-        <Route exact path="/categories" element={<Categories />} />
-        <Route exact path="/products" element={<Products />} />
+        <Route path="/" element={<WrappedProducts />} />
+        <Route path="/:categoryId" element={<WrappedProducts />} />
+        <Route path="product/:productId" element={<WrappedProduct />} />
+        {/* <Route path="cart" element={<Cart />} /> */}
       </Routes>
     </div>
   );

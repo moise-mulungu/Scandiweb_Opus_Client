@@ -1,10 +1,9 @@
 import React from 'react';
 import Proptypes from 'prop-types';
 import { GetProductsForAllCategories } from '../redux/products/products';
+import { categoryToIdsMap } from '../constants';
 
 import { connect } from 'react-redux';
-// to implement 'add book', see deleteBook in Book.js example of converting a hook to class component with mapDispatchToProps
-// import AddBook from './AddBook';
 
 function mapStateToProps(state) {
   const products = state.productsReducer;
@@ -14,15 +13,12 @@ function mapStateToProps(state) {
 const mapDispatchToProps = (dispatch) => {
   return {
     getProducts: () => dispatch(GetProductsForAllCategories()),
-    //     deleteBook: (bookId) => dispatch(del(bookId)),
   };
 };
 
 class Products extends React.Component {
   constructor(props) {
     super(props);
-    // note: Moise ask me when you need local state, I'll show you some examples
-    // this.state = { };
   }
 
   componentDidMount() {
@@ -40,20 +36,68 @@ class Products extends React.Component {
   }
 
   render() {
-    const { products = [] } = this.props;
+    const {
+      products,
+      router: {
+        params: { categoryId = 'women' }, // if the user goes to the homepage, there is no categoryId in the URL, so default to 'women'
+      },
+    } = this.props;
 
-    console.log('Products component ran', { products });
+    console.log('Products component ran', {
+      products,
+      props: this.props,
+      categoryId,
+    });
     return (
       <>
-        {products.filter(Boolean).map(
-          (
-            product,
-            idx // TODO: don't use index
-          ) => (
-            <pre key={idx}>{JSON.stringify(product, null, 2)}</pre>
+        <h1 className='title'>Category Name</h1>
+        <div className='allCards'>
+
+        {products
+          .filter(Boolean)
+          .filter((product) =>
+            categoryToIdsMap[categoryId].includes(product.id)
           )
-        )}
-        {/* // <AddBook /> */}
+          .map(
+            (
+              product,
+              idx // TODO: don't use index
+            ) => (
+              (<pre key={idx}>{JSON.stringify(product, null, 2)}</pre>),
+              (
+                <div key={idx} className="cont">
+                  ProductId:{product.id}{' '}
+                  <a href={`/product/${product.id}`}>GOTO: {product.name}</a>
+                  {/* ProductionDesc:
+                  <div
+                  dangerouslySetInnerHTML={{ __html: product.description }}
+                /> */}
+                   <div className='productGallery'>
+                    ProductGallery :{' '}
+                    {product.gallery?.map((imageUrl) => {
+                      return (
+                        <div key={imageUrl} className="img">
+                          <img src={imageUrl} />
+                        </div>
+                      );
+                    })}
+                  </div>
+                  <h2>{product.name}</h2>
+                  <div>
+                    ProductPrice : {product.prices?.map((price) => {
+                      return (
+                        <div key={price.currency}>
+                          {price.currency.label}
+                          {price.currency.symbol} {price.amount}
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              )
+            )
+          )}
+        </div>
       </>
     );
   }
@@ -61,6 +105,8 @@ class Products extends React.Component {
 Products.propTypes = {
   products: Proptypes.arrayOf(Proptypes.object).isRequired,
   getProducts: Proptypes.func.isRequired,
+  categoryId: Proptypes.string,
+  router: Proptypes.object,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Products);
 

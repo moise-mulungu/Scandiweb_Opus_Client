@@ -47,7 +47,8 @@ query GetProductsForAllCategories {
     products {
       id
       name
-      category
+      description
+      gallery
        attributes {
          id
          name 
@@ -59,12 +60,13 @@ query GetProductsForAllCategories {
 */
     const categoryQuery = new Query('category', true) // `true` means 'expect array'
       // .addArgument('id', 'String', "huarache-x-stussy-le") // use for product query when have to provide a specific id
+      .addArgument('id', 'String', "huarache-x-stussy-le") 
       .addFieldList(['name'])
       .addField(
         new Field('products', true)
-          .addFieldList(['id', 'name', 'category'])
+          .addFieldList(['id', 'name', 'description', 'gallery'])
           .addField(
-            new Field('attributes', true).addFieldList(['id', 'name', 'type'])
+            new Field('attributes', true).addFieldList(['id', 'name', 'items'])
             // follow the same pattern here to add "items" field
           )
       );
@@ -79,6 +81,7 @@ query GetProductsForAllCategories {
     console.log('error', e);
   }
 };
+
 const productsReducer = (state = initialState, action) => {
   switch (action.type) {
     // case ADD:

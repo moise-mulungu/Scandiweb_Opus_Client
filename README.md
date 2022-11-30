@@ -26,7 +26,7 @@ git branch -M main
 git remote add origin https://github.com/xxxxx/xxxxx.git
 git push -u origin main
 
-# next (for Moise)
+# next 
 * convert AddBook.js to a class component (similar to Book.js)
 * convert Books.js to a class component
 * now you know how class components work!
@@ -35,7 +35,7 @@ git push -u origin main
 * I searched the /api source, and found nothing on gender, age, so ... maybe deduce it from the other data? Or, maybe just implement the Men, Women, Kids as tabs in the UI, but no change to the content.
 
 
-# todos (for Duncan, or if you know what it needs, feel free)
+# todos
 * babel config error (see first import of any js file in client/)
   * note: as a monorepo, one must take note of separate configs for / and client/
 * update some packages because there are some critical vulnerabilities
