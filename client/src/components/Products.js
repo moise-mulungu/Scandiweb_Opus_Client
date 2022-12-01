@@ -48,7 +48,7 @@ class Products extends React.Component {
       products,
       props: this.props,
       categoryId,
-      Price,
+
     });
     return (
       <>
@@ -83,6 +83,14 @@ class Products extends React.Component {
                         </div>
                       );
                     })}
+                    {/* {product.gallery.forEach((imageUrl) => {
+                      return (
+                        <div key={imageUrl} className="img">
+                          <img src={imageUrl} />
+                        </div>
+                      );
+                      
+                    })} */}
                   </div>
                   <h2>{product.name}</h2>
                   <div>

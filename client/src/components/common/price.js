@@ -1,4 +1,5 @@
 import React from "react";
+import Proptypes from 'prop-types';
 
 export default function Price({ prices, currencyLabel }) {
     const price = prices.find((price) => price.currency.label === currencyLabel);
