@@ -5,6 +5,7 @@ import { categoryToIdsMap, defaultCurrencyLabel } from '../constants';
 import Price from './common/price';
 
 import { connect } from 'react-redux';
+import Gallery from './common/gallery';
 
 function mapStateToProps(state) {
   const products = state.productsReducer;
@@ -74,7 +75,7 @@ class Products extends React.Component {
                   <div
                   dangerouslySetInnerHTML={{ __html: product.description }}
                 /> */}
-                   <div className='productGallery'>
+                   {/* <div className='productGallery'>
                     ProductGallery :{' '}
                     {product.gallery?.map((imageUrl) => {
                       return (
@@ -82,7 +83,7 @@ class Products extends React.Component {
                           <img src={imageUrl} />
                         </div>
                       );
-                    })}
+                    })} */}
                     {/* {product.gallery.forEach((imageUrl) => {
                       return (
                         <div key={imageUrl} className="img">
@@ -91,7 +92,12 @@ class Products extends React.Component {
                       );
                       
                     })} */}
+                  <div >
+                    <Gallery
+                      images={product.images}
+                    />
                   </div>
+                  {/* </div> */}
                   <h2>{product.name}</h2>
                   <div>
                     <Price
