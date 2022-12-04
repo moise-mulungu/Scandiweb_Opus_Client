@@ -92,7 +92,7 @@ class Products extends React.Component {
                       );
                       
                     })} */}
-                  <div >
+                  <div  className='productGallery'>
                     <Gallery
                       images={product.gallery[0]}
                     />
