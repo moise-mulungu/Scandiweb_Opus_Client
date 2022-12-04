@@ -94,7 +94,7 @@ class Products extends React.Component {
                     })} */}
                   <div >
                     <Gallery
-                      images={product.gallery}
+                      images={product.gallery[0]}
                     />
                   </div>
                   {/* </div> */}
