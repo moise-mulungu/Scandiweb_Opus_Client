@@ -52,9 +52,8 @@ class Product extends React.Component {
         <pre>{JSON.stringify(product, null, 2)}</pre>
         <div className="cont">
           ProductId:{product.id}
-          <h2>Name:{product.name}</h2>
-          ProductionDesc:
-          <div dangerouslySetInnerHTML={{ __html: product.description }} />
+          {/* ProductionDesc:
+          <div dangerouslySetInnerHTML={{ __html: product.description }} /> */}
           <div>
             ProductGallery :{' '}
             {product.gallery?.map((imageUrl) => {
@@ -65,6 +64,7 @@ class Product extends React.Component {
               );
             })}
           </div>
+          <h2>Name:{product.name}</h2>
         </div>
       </>
     );

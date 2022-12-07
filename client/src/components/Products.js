@@ -2,7 +2,7 @@ import React from 'react';
 import Proptypes from 'prop-types';
 import { GetProductsForAllCategories } from '../redux/products/products';
 import { categoryToIdsMap, defaultCurrencyLabel } from '../constants';
-// import { productIdToImageMapping } from '../constants';
+import { productIdToImageMapping } from '../constants';
 import Price from './common/price';
 
 import { connect } from 'react-redux';
@@ -74,10 +74,10 @@ class Products extends React.Component {
                   <a href={`/product/${product.id}`}>GOTO: {product.name}</a>
                   
                   <div  className='productGallery'>
-                    <Gallery
+                    {/* <Gallery
                       images={product.gallery[0]}
-                    />
-                    {/* <img src={ productIdToImageMapping[product.id] } /> */}
+                    /> */}
+                    <img src={ productIdToImageMapping[product.id] } />
                   </div>
                   <h2>{product.name}</h2>
                   <div>

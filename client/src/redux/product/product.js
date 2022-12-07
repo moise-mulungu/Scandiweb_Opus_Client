@@ -25,7 +25,7 @@ export const getProductById = (productId) => async (dispatch) => {
 const productReducer = (state = initialState, action) => {
   switch (action.type) {
     case UPDATE: {
-      const product = action.payload?.product;
+      const product = action.payload?.queryResult?.product;
       console.log('redux/product  productReducer() product', {
         actionPayload: action.payload,
         product,
