@@ -92,7 +92,13 @@ query GetProductsForAllCategories {
 
 16. reduce
   ex: 
-  about: change a array to an object ['red', 'male'] convert to { color: red, gender: 'male' }
+  const array1 = [1, 2, 3, 4];
+
+  const initialValue = 0;
+  const sumWithInitial = array1.reduce((accumulator, currentValue) => accumulator + currentValue,
+  initialValue
+);// [10]
+
 
 17. slice
   ex: const animals = ['ant', 'bison', 'camel', 'duck', 'elephant'].slice(2); //  Array ["camel", "duck", "elephant"]
